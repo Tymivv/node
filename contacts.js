@@ -56,14 +56,18 @@ async function addContact(name, email, phone) {
 }
 
 async function updateById(id, name, email, phone) {
-  const contactsAll = JSON.parse(await fs.readFile(contactsPath, "utf-8"));
-  const index = contactsAll.findIndex((item) => item.id === id);
-  if (index === -1) {
-    return console.log(null);
+  try {
+    const contactsAll = JSON.parse(await fs.readFile(contactsPath, "utf-8"));
+    const index = contactsAll.findIndex((item) => item.id === id);
+    if (index === -1) {
+      return console.log(null);
+    }
+    contactsAll[index] = { id, name, email, phone };
+    await fs.writeFile(contactsPath, JSON.stringify(contactsAll, null, 4));
+    return console.log(contactsAll[index]);
+  } catch (error) {
+    return console.log(error.message);
   }
-  contactsAll[index] = { id, name, email, phone };
-  await fs.writeFile(contactsPath, JSON.stringify(contactsAll, null, 4));
-  return console.log(contactsAll[index]);
 }
 
 module.exports = {
