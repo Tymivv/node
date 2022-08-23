@@ -1,0 +1,21 @@
+{
+  "name": "node",
+  "version": "0.1.0",
+  "private": true,
+  "homepage": "https://github.com/Tymivv/node",
+  "devDependencies": {
+    "gh-pages": "^3.2.3",
+    "husky": "^7.0.4",
+    "nodemon": "^2.0.15"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "deploy": "gh-pages -d build"
+  },
+  "dependencies": {
+    "nanoid": "^3.3.4",
+    "yargs": "^17.3.1"
+  }
+}
